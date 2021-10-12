@@ -10,7 +10,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +25,7 @@ import javax.swing.JOptionPane;
 public class AutoGuardadoVideos {
     public static void main(String[] args) {
     //Meses y Días de la Semana
-    String [] semanaTexto = {"Viernes", "Sábado", "Domingo", "Lunes", "Martes", "Miércoles", "Jueves"};
+    String [] semanaTexto = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
     String [] mesTexto = {"Ene", "Feb", "Mar", "Abr", "Mayo", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"};
     
     //Recogo ruta de destino
@@ -67,48 +72,23 @@ public class AutoGuardadoVideos {
                                 "pmdm: " + archivosPMDM.length);*/
             
             if (archivosPSP.length != 0){
-                for (int i = 0; i < archivosPSP.length; i++) {
-                    if(Integer.parseInt(archivosPSP[i].substring(archivosPSP[i].lastIndexOf("_")+1, archivosPSP[i].lastIndexOf("."))) > psp){
-                        psp = Integer.parseInt(archivosPSP[i].substring(archivosPSP[i].lastIndexOf("_")+1, archivosPSP[i].lastIndexOf(".")));
-                        psp++;
-                    }
-                }
+                psp = archivosPSP.length + 1;
             }
             
             if (archivosDI.length != 0){
-                for (int i = 0; i < archivosDI.length; i++) {
-                    if(Integer.parseInt(archivosDI[i].substring(archivosDI[i].lastIndexOf("_")+1, archivosDI[i].lastIndexOf("."))) > di){
-                        di = Integer.parseInt(archivosDI[i].substring(archivosDI[i].lastIndexOf("_")+1, archivosDI[i].lastIndexOf(".")));
-                        di++;
-                    }
-                }
+                di = archivosDI.length + 1;
             }
             
             if (archivosAD.length != 0){
-                for (int i = 0; i < archivosAD.length; i++) {
-                    if(Integer.parseInt(archivosAD[i].substring(archivosAD[i].lastIndexOf("_")+1, archivosAD[i].lastIndexOf("."))) > ad){
-                        ad = Integer.parseInt(archivosAD[i].substring(archivosAD[i].lastIndexOf("_")+1, archivosAD[i].lastIndexOf(".")));
-                        ad++;
-                    }
-                }
+                ad = archivosAD.length + 1;
             }
            
             if (archivosSGE.length != 0){
-                for (int i = 0; i < archivosSGE.length; i++) {
-                    if(Integer.parseInt(archivosSGE[i].substring(archivosSGE[i].lastIndexOf("_")+1, archivosSGE[i].lastIndexOf("."))) > sge){
-                        sge = Integer.parseInt(archivosSGE[i].substring(archivosSGE[i].lastIndexOf("_")+1, archivosSGE[i].lastIndexOf(".")));
-                        sge++;
-                    }
-                }
+                sge = archivosSGE.length + 1;
             }
             
             if (archivosPMDM.length != 0){
-                for (int i = 0; i < archivosPMDM.length; i++) {
-                    if(Integer.parseInt(archivosPMDM[i].substring(archivosPMDM[i].lastIndexOf("_")+1, archivosPMDM[i].lastIndexOf("."))) > pmdm){
-                        pmdm = Integer.parseInt(archivosPMDM[i].substring(archivosPMDM[i].lastIndexOf("_")+1, archivosPMDM[i].lastIndexOf(".")));  
-                        pmdm++;
-                    }
-                }
+                pmdm = archivosPMDM.length + 1;
             }
              
             
@@ -130,7 +110,7 @@ public class AutoGuardadoVideos {
             Path source = Paths.get(ruta+"\\"+archivos[i]);
             
             //Creo variables para guardar los diferentes datos
-            String dia, mes, año, horas, minutos, diaTexto, asignaturaIntuicion;
+            String dia, mes, año, horas, minutos, diaTexto = "", asignaturaIntuicion;
             
             //### Recopilación de datos ###
             
@@ -169,19 +149,27 @@ public class AutoGuardadoVideos {
               
          
             //Guardo los datos en un tipo Calendario para tenerlo en formato fecha
-            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", java.util.Locale.ENGLISH);
+            Date myDate;
+        try {
+            myDate = sdf.parse(dia+"/"+mes+"/"+año);
+            sdf.applyPattern("EEE");
+            diaTexto = sdf.format(myDate);
+            System.out.println(diaTexto);
             
-            cal.set(Integer.valueOf(año), Integer.parseInt(mes), Integer.parseInt(dia), Integer.parseInt(horas), Integer.parseInt(minutos));
+        } catch (ParseException ex) {
+            Logger.getLogger(AutoGuardadoVideos.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
-            diaTexto = semanaTexto[cal.get(Calendar.DAY_OF_WEEK)-1];
             
             
             //Si cae en martes, por intuición sabemos que es PMDM
-            if("Martes".equals(diaTexto)){
+            if("Tue".equals(diaTexto)){
                 asignaturaIntuicion = "PMDM";
+                diaTexto = "Martes";
             }
             // Si cae en miércoles por intuición es PSP o DI
-            else if("Miércoles".equals(diaTexto)){
+            else if("Wed".equals(diaTexto)){
                 //Ajusto para saber si es uno o otro, por la hora.
                 if(Integer.parseInt(horas) == 19 || Integer.parseInt(horas) == 20){
                     asignaturaIntuicion = "PSP";
@@ -189,9 +177,10 @@ public class AutoGuardadoVideos {
                 else{
                     asignaturaIntuicion = "DI";
                 }
+                diaTexto = "Miércoles";
             }
             // Si cae en jueves por intuición es SGE o AD
-            else if("Jueves".equals(diaTexto)){
+            else if("Thu".equals(diaTexto)){
                 //Ajusto para saber si es uno o otro, por la hora.
                 if(Integer.parseInt(horas) == 19 || Integer.parseInt(horas) == 20){
                     asignaturaIntuicion = "SGE";
@@ -199,13 +188,30 @@ public class AutoGuardadoVideos {
                 else{
                     asignaturaIntuicion = "AD";
                 }
+                diaTexto = "Jueves";
             }
             else{
                 //Si no es capaz de adivinarlo, pondrá el guión.
                 asignaturaIntuicion = "-";
+                
+                if(diaTexto.equalsIgnoreCase("Mon")){
+                    diaTexto = "Lunes";
+                }
+                else if(diaTexto.equalsIgnoreCase("Fri")){
+                   diaTexto = "Viernes"; 
+                }
+                else if(diaTexto.equalsIgnoreCase("Sat")){
+                   diaTexto = "Sábado"; 
+                }
+                else if(diaTexto.equalsIgnoreCase("Sun")){
+                   diaTexto = "Domingo"; 
+                }
+                else{
+                    diaTexto = "DiaSemanaDesconocido";
+                }
             }
             //Abrimos un JOptionPane para recopilar el dato de la asignatura de manera manual.
-            inputAsignatura = (String) JOptionPane.showInputDialog(null, "Video Grabado: \n" + diaTexto +" " + dia +  ", " + mesTexto[Integer.parseInt(mes)+1] + " " + año + " " 
+            inputAsignatura = (String) JOptionPane.showInputDialog(null, "Video Grabado: \n" + diaTexto +" " + dia +  ", " + mesTexto[Integer.parseInt(mes)-1] + " " + año + " " 
                     + horas + ":" + minutos + "\nIntroduce la asignatura", asignaturaIntuicion, JOptionPane.QUESTION_MESSAGE, null,   new Object[] {"-" ,"PSP", "DI", "AD", "PMDM", "SGE" }, asignaturaIntuicion);
         
         
@@ -224,22 +230,24 @@ public class AutoGuardadoVideos {
                     // Elegimos la asignatura y guardaremos el número de clase que toca.
                     if(inputAsignatura.equalsIgnoreCase("PSP")){
                         numClase = psp;
+                        psp++;
                         
                     }
                     else if(inputAsignatura.equalsIgnoreCase("DI")){
                         numClase = di;
-                        
+                        di++;
                     }
                     else if(inputAsignatura.equalsIgnoreCase("AD")){
                         numClase = ad;
-                        
+                        ad++;
                     }
                     else if(inputAsignatura.equalsIgnoreCase("SGE")){
                         numClase = sge;
+                        sge++;
                     }
                     else if(inputAsignatura.equalsIgnoreCase("PMDM")){
                         numClase = pmdm;
-                        
+                        pmdm++;
                     }
                     //Si es desconocida, le pondremos 0
                     else{
