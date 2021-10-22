@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dammanager;
+package damtools;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author joan-
+ * @author juanj
  */
-public class DAMManager extends Application {
+public class DAMTools extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
