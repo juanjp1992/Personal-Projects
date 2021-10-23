@@ -23,6 +23,8 @@ public class DAMTools extends Application {
         
         Scene scene = new Scene(root);
         
+        stage.setTitle("DAM Tools");
+        
         stage.setScene(scene);
         stage.show();
     }

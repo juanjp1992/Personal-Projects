@@ -7,12 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="287.0" prefWidth="717.0" style="-fx-background-color: #1a5276;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="damtools.InterfazController">
+<AnchorPane id="AnchorPane" prefHeight="334.0" prefWidth="717.0" style="-fx-background-color: #1a5276;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="damtools.InterfazController">
     <children>
-        <Button fx:id="button" layoutX="21.0" layoutY="26.0" onAction="#btnAutoGuardadoDAM" prefHeight="32.0" prefWidth="179.0" text="Autoguardado Grabaciones" />
-      <Button fx:id="button1" layoutX="21.0" layoutY="75.0" onAction="#btnCreacionTareas" prefHeight="32.0" prefWidth="179.0" text="Creación Nuevas Tareas" />
-      <Button layoutX="21.0" layoutY="127.0" onAction="#btnJuntarPDF" prefHeight="32.0" prefWidth="179.0" text="Juntar PDF's Temario" />
-      <Pane layoutX="410.0" layoutY="25.0" prefHeight="238.0" prefWidth="283.0" style="-fx-background-color: gray;">
+        <Button fx:id="button" layoutX="23.0" layoutY="67.0" onAction="#btnAutoGuardadoDAM" prefHeight="32.0" prefWidth="179.0" text="Autoguardado Grabaciones" />
+      <Button fx:id="button1" layoutX="23.0" layoutY="116.0" onAction="#btnCreacionTareas" prefHeight="32.0" prefWidth="179.0" text="Creación Nuevas Tareas" />
+      <Button layoutX="23.0" layoutY="168.0" onAction="#btnJuntarPDF" prefHeight="32.0" prefWidth="179.0" text="Juntar PDF's Temario" />
+      <Pane layoutX="412.0" layoutY="66.0" prefHeight="238.0" prefWidth="283.0" style="-fx-background-color: gray;">
          <children>
             <Label layoutX="28.0" layoutY="20.0" text="Grabaciones sin reordenar --&gt;" textFill="WHITE">
                <font>
@@ -40,11 +40,16 @@
             </FlowPane>
          </children>
       </Pane>
-      <Button layoutX="21.0" layoutY="178.0" onAction="#btnContadorPaginas" prefHeight="32.0" prefWidth="179.0" text="Contador de Páginas" />
-      <Button layoutX="214.0" layoutY="26.0" onAction="#btnAbrirClaseOnline" prefHeight="32.0" prefWidth="179.0" text="Abrir Clase Online" />
-      <Button layoutX="214.0" layoutY="75.0" onAction="#btnAbrirAsignatura" prefHeight="32.0" prefWidth="179.0" text="Abrir Asignatura" />
-      <Button layoutX="214.0" layoutY="127.0" onAction="#btnVerGrabaciones" prefHeight="32.0" prefWidth="179.0" text="Ver Grabaciones" />
-      <Button layoutX="214.0" layoutY="178.0" onAction="#btnAbrirTrabajo" prefHeight="32.0" prefWidth="179.0" text="Abrir Trabajo Word" />
-      <Button layoutX="21.0" layoutY="229.0" onAction="#btnVerTemario" prefHeight="32.0" prefWidth="179.0" text="Ver Temario" />
+      <Button layoutX="23.0" layoutY="219.0" onAction="#btnContadorPaginas" prefHeight="32.0" prefWidth="179.0" text="Contador de Páginas" />
+      <Button layoutX="216.0" layoutY="67.0" onAction="#btnAbrirClaseOnline" prefHeight="32.0" prefWidth="179.0" text="Abrir Clase Online" />
+      <Button layoutX="216.0" layoutY="116.0" onAction="#btnAbrirAsignatura" prefHeight="32.0" prefWidth="179.0" text="Abrir Asignatura" />
+      <Button layoutX="216.0" layoutY="168.0" onAction="#btnVerGrabaciones" prefHeight="32.0" prefWidth="179.0" text="Ver Grabaciones" />
+      <Button layoutX="216.0" layoutY="219.0" onAction="#btnAbrirTrabajo" prefHeight="32.0" prefWidth="179.0" text="Abrir Trabajo Word" />
+      <Button layoutX="23.0" layoutY="270.0" onAction="#btnVerTemario" prefHeight="32.0" prefWidth="179.0" text="Ver Temario" />
+      <Label layoutX="23.0" layoutY="14.0" text="Dam Tools" textFill="WHITE">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
