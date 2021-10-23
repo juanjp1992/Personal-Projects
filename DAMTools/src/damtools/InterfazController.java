@@ -154,6 +154,25 @@ public class InterfazController implements Initializable {
         
     }
     @FXML
+    private void btnVerTemario(ActionEvent event) {
+        String asignatura = (String) JOptionPane.showInputDialog(null, "Elige Asignatura para ver el Temario", "Selecciona Asignatura", JOptionPane.QUESTION_MESSAGE, null,   new Object[] {"-" ,"PSP", "DI", "AD", "PMDM", "SGE" }, "-");
+        File pathAsignatura = new File("\\\\192.168.1.220\\nukistorage\\Estudios\\DAM\\2_DAM\\Temarios\\"+ asignatura);
+        String [] temario = pathAsignatura.list();
+        String eleccionTema = (String) JOptionPane.showInputDialog(null, "Elige una clase que ver:", "Selecciona Grabación", JOptionPane.QUESTION_MESSAGE, null,   temario, temario[0]);
+
+        File eleccionUD = null;
+        if (Desktop.isDesktopSupported()) {
+            try {
+                eleccionUD = new File (pathAsignatura + File.separator + eleccionTema);
+                Desktop.getDesktop().open(eleccionUD);
+            } catch (IOException e) {
+                System.out.println("No se puede abrir el PDF");
+            }
+        }
+
+    }
+    
+    @FXML
     private void btnVerGrabaciones(ActionEvent event) {
         String asignatura = (String) JOptionPane.showInputDialog(null, "¿Que grabaciones quieres ver?", "Selecciona Asignatura", JOptionPane.QUESTION_MESSAGE, null,   new Object[] {"-" ,"PSP", "DI", "AD", "PMDM", "SGE" }, "-");
         

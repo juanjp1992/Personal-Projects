@@ -45,5 +45,6 @@
       <Button layoutX="214.0" layoutY="75.0" onAction="#btnAbrirAsignatura" prefHeight="32.0" prefWidth="179.0" text="Abrir Asignatura" />
       <Button layoutX="214.0" layoutY="127.0" onAction="#btnVerGrabaciones" prefHeight="32.0" prefWidth="179.0" text="Ver Grabaciones" />
       <Button layoutX="214.0" layoutY="178.0" onAction="#btnAbrirTrabajo" prefHeight="32.0" prefWidth="179.0" text="Abrir Trabajo Word" />
+      <Button layoutX="21.0" layoutY="229.0" onAction="#btnVerTemario" prefHeight="32.0" prefWidth="179.0" text="Ver Temario" />
     </children>
 </AnchorPane>
