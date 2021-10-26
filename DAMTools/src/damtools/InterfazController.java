@@ -14,7 +14,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,11 +71,8 @@ public class InterfazController implements Initializable {
     
     @FXML
     private void btnAutoGuardadoDAM(ActionEvent event) {
-        try {
-            Process p2 = new ProcessBuilder("java", "-jar", "AutoGuardadoVideosDAM.jar").inheritIO().start();
-        } catch (IOException ex) {
-            System.out.println("ERROR: Imposible crear nuevo proceso de AutoGuardado de Videos --> " + ex);
-        }
+        autoGuardadoVideos agv = new autoGuardadoVideos();
+        agv.guardaVideos();
         //Volvemos a contar las grabaciones.
         txtNumGrabaciones.setText(String.valueOf(recuentoGrabaciones()));
         
@@ -400,7 +402,7 @@ public class InterfazController implements Initializable {
     @FXML
     private void btnContadorPaginas(ActionEvent event) {
         try {
-            Process p2 = new ProcessBuilder("java", "-jar", "contadorPaginas_Portatil.jar").inheritIO().start();
+            Process p5 = new ProcessBuilder("java", "-jar", "contadorPaginas_Portatil.jar").start();
         } catch (IOException ex) {
             System.out.println("ERROR: Imposible crear nuevo proceso de AutoGuardado de Videos --> " + ex);
         }

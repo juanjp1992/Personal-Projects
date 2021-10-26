@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="334.0" prefWidth="717.0" style="-fx-background-color: #1a5276;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="damtools.InterfazController">
+    
     <children>
         <Button fx:id="button" layoutX="23.0" layoutY="67.0" onAction="#btnAutoGuardadoDAM" prefHeight="32.0" prefWidth="179.0" text="Autoguardado Grabaciones" />
       <Button fx:id="button1" layoutX="23.0" layoutY="116.0" onAction="#btnCreacionTareas" prefHeight="32.0" prefWidth="179.0" text="Creación Nuevas Tareas" />
