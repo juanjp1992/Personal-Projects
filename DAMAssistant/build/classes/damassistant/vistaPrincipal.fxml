@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="damassistant.vistaPrincipalController">
+   <children>
+      <BorderPane layoutX="111.0" layoutY="65.0" prefHeight="588.0" prefWidth="815.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <right>
+            <VBox alignment="TOP_CENTER" prefHeight="588.0" prefWidth="155.0" spacing="10.0" style="-fx-background-color: gray;" BorderPane.alignment="TOP_CENTER">
+               <children>
+                  <ImageView cacheHint="SPEED" fitHeight="143.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@foc.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="45.0" layoutY="292.0" mnemonicParsing="false" onAction="#btnInicio" prefHeight="31.0" prefWidth="134.0" text="INICIO" />
+                  <Button layoutX="25.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnTareas" prefHeight="31.0" prefWidth="134.0" text="HERRAMIENTAS" />
+                  <Button layoutX="21.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnGrabaciones" prefHeight="31.0" prefWidth="134.0" text="GRABACIONES" />
+                  <Button layoutX="21.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnMinutados" prefHeight="31.0" prefWidth="134.0" text="MINUTADOS" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+         </right>
+         <center>
+            
+         </center>
+         <center>
+            <VBox fx:id="contenido" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

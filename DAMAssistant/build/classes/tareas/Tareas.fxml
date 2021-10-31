@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="PanelTareas" prefHeight="588.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tareas.TareasController">
+   <children>
+      <Label layoutX="16.0" layoutY="13.0" prefHeight="35.0" prefWidth="165.0" text="Últimas Tareas">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="138.0" prefHeight="17.0" prefWidth="154.0" text="Creación Tareas">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="selectAsignaturasTareas" layoutX="16.0" layoutY="181.0" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
+      <Button contentDisplay="CENTER" layoutX="223.0" layoutY="181.0" mnemonicParsing="false" onAction="#btnCrearEstructura" prefHeight="25.0" prefWidth="120.0" text="Crear Estructura" />
+      <Label fx:id="txtResultadoEstructura" layoutX="19.0" layoutY="218.0" text="Se ha creado correctamente" />
+      <Label layoutX="19.0" layoutY="255.0" text="Temario">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="selectAsignaturasTema" layoutX="19.0" layoutY="294.0" onAction="#accionSelectAsignatura" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
+      <Button contentDisplay="CENTER" layoutX="19.0" layoutY="327.0" mnemonicParsing="false" onAction="#btnAbrirTemario" prefHeight="25.0" prefWidth="185.0" text="Abrir Temario" />
+      <HBox alignment="CENTER" layoutX="16.0" layoutY="56.0" prefHeight="47.0" prefWidth="629.0">
+         <children>
+            <Label text="PSP">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnPSP" mnemonicParsing="false" onAction="#btnPSPFolder" prefHeight="34.0" prefWidth="78.0" text="UD10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="SGE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnSGE" mnemonicParsing="false" onAction="#btnSGEFolder" prefHeight="34.0" prefWidth="78.0" text="UD10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="12.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="DI">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnDI" mnemonicParsing="false" onAction="#btnDIFolder" prefHeight="34.0" prefWidth="78.0" text="UD10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="PMDM">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnPMDM" mnemonicParsing="false" onAction="#btnPMDMFolder" prefHeight="34.0" prefWidth="78.0" text="UD10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="AD">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnAD" mnemonicParsing="false" onAction="#btnADFolder" prefHeight="34.0" prefWidth="78.0" text="UD10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <ListView fx:id="listaTemas" layoutX="19.0" layoutY="360.0" prefHeight="200.0" prefWidth="185.0" />
+      <Label layoutX="432.0" layoutY="372.0" text="Elige Unidad">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNumUnidad" alignment="CENTER" editable="false" layoutX="473.0" layoutY="399.0" prefHeight="35.0" prefWidth="117.0" text="1">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnMasEstado" layoutX="599.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnMas" prefHeight="50.0" prefWidth="33.0" text="&gt;" />
+      <Button fx:id="btnMenosEstado" layoutX="432.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnMenos" prefHeight="50.0" prefWidth="33.0" text="&lt;" />
+      <Button layoutX="432.0" layoutY="468.0" mnemonicParsing="false" onAction="#btnAbrir" prefHeight="35.0" prefWidth="200.0" text="Abrir" />
+      <ComboBox fx:id="selectAsignaturas" layoutX="432.0" layoutY="335.0" prefHeight="25.0" prefWidth="200.0" promptText="Elige Asignatura" />
+      <ComboBox fx:id="selectFuncionalidad" layoutX="432.0" layoutY="294.0" onAction="#accionSelectFuncionalidad" prefHeight="25.0" prefWidth="200.0" promptText="Elige funcionalidad" />
+      <Label layoutX="432.0" layoutY="255.0" text="Enlaces">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="226.0" layoutY="253.0" text="Fusión de PDF's">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="226.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnBusquedaArchivo" prefHeight="25.0" prefWidth="28.0" text="+" />
+      <TextField fx:id="txtRuta" layoutX="259.0" layoutY="294.0" />
+      <ComboBox fx:id="selectAsignaturasPDF" layoutX="226.0" layoutY="335.0" onAction="#accionSelectAsignaturaPDF" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
+      <Button fx:id="btnFusionarPDF" layoutX="226.0" layoutY="383.0" mnemonicParsing="false" onAction="#accionFusionarPDF" prefHeight="32.0" prefWidth="185.0" text="Fusionar PDF's" />
+      <Button layoutX="473.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnReset" prefHeight="6.0" prefWidth="117.0" text="Reset" />
+      <Button layoutX="600.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnContadorMas" prefHeight="50.0" prefWidth="33.0" text="+" />
+      <TextField fx:id="txtContador" alignment="CENTER" editable="false" layoutX="474.0" layoutY="178.0" prefHeight="35.0" prefWidth="117.0" text="1">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </TextField>
+      <Label layoutX="417.0" layoutY="138.0" prefHeight="17.0" prefWidth="154.0" text="Contador">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="432.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnContadorMenos" prefHeight="50.0" prefWidth="33.0" text="-" />
+   </children>
+</AnchorPane>

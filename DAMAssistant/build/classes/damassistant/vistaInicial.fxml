@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="damassistant.VistaInicialController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="203.0" text="Información General">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="54.0" text="Últimas Tareas">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <VBox layoutX="97.0" layoutY="80.0" prefHeight="200.0" prefWidth="59.0">
+         <children>
+            <Label fx:id="txtUDPSP" text="UD1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtUDDI" layoutX="15.0" layoutY="47.0" text="UD1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtUDAD" layoutX="15.0" layoutY="64.0" text="UD1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtUDSGE" layoutX="15.0" layoutY="87.0" text="UD1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets top="3.0" />
+               </padding>
+            </Label>
+            <Label fx:id="txtUDPMDM" layoutX="15.0" layoutY="110.0" text="UD1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNumGrabaciones" layoutX="15.0" layoutY="130.0" text="--&gt; 5">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="5.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" layoutX="7.0" layoutY="80.0" prefHeight="330.0" prefWidth="90.0">
+         <children>
+            <Label layoutX="40.0" layoutY="20.0" text="PSP --&gt;">
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="47.0" text="DI --&gt;">
+               <VBox.margin>
+                  <Insets left="15.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="69.0" text="AD --&gt;">
+               <VBox.margin>
+                  <Insets left="15.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="91.0" text="SGE --&gt;">
+               <VBox.margin>
+                  <Insets left="15.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="113.0" text="PMDM --&gt;">
+               <VBox.margin>
+                  <Insets left="15.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="20.0" text="Grabaciones">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="172.0" text="por Guardar">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="175.0" layoutY="54.0" text="Horario Semanal">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <HBox layoutX="175.0" layoutY="80.0" prefHeight="159.0" prefWidth="372.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="asig1" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase1" layoutX="26.0" layoutY="10.0" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia1" layoutX="25.0" layoutY="36.0" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora1" layoutX="28.0" layoutY="31.0" text="20:00" textAlignment="CENTER" />
+                  <Label fx:id="asig2" layoutX="23.0" layoutY="10.0" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase2" layoutX="25.0" layoutY="31.0" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia2" layoutX="16.0" layoutY="53.0" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora2" layoutX="33.0" layoutY="48.0" text="20:00" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="asig3" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase3" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia3" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora3" text="20:00" textAlignment="CENTER" />
+                  <Label fx:id="asig4" layoutX="26.0" layoutY="10.0" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase4" layoutX="28.0" layoutY="31.0" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia4" layoutX="16.0" layoutY="53.0" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora4" layoutX="36.0" layoutY="48.0" text="20:00" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="asig5" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase5" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia5" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora5" text="20:00" textAlignment="CENTER" />
+                  <Label fx:id="asig6" layoutX="26.0" layoutY="10.0" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase6" layoutX="28.0" layoutY="31.0" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia6" layoutX="17.0" layoutY="53.0" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora6" layoutX="36.0" layoutY="48.0" text="20:00" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="158.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="asig7" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase7" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia7" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora7" text="20:00" textAlignment="CENTER" />
+                  <Label fx:id="asig8" layoutX="26.0" layoutY="10.0" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase8" layoutX="28.0" layoutY="31.0" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia8" layoutX="17.0" layoutY="53.0" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora8" layoutX="36.0" layoutY="48.0" text="20:00" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="178.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="asig9" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase9" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia9" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora9" text="20:00" textAlignment="CENTER" />
+                  <Label fx:id="asig10" layoutX="26.0" layoutY="10.0" text="PMDM" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="clase10" layoutX="28.0" layoutY="31.0" text="Clase 12" textAlignment="CENTER" />
+                  <Label fx:id="dia10" layoutX="17.0" layoutY="53.0" text="12/10/2021" textAlignment="CENTER" />
+                  <Label fx:id="hora10" layoutX="36.0" layoutY="48.0" text="20:00" textAlignment="CENTER" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
