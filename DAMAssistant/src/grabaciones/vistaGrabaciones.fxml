@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="selectAsignatura" prefHeight="588.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grabaciones.VistaGrabacionesController">
+   <children>
+      <ComboBox fx:id="selectAsignaturas" layoutX="22.0" layoutY="32.0" onAction="#eventoSeleccionAsignatura" prefHeight="34.0" prefWidth="200.0" promptText="Seleccione la asignatura" />
+      <ListView fx:id="listaGrabaciones" layoutX="22.0" layoutY="81.0" prefHeight="402.0" prefWidth="200.0" />
+      <Button layoutX="22.0" layoutY="495.0" mnemonicParsing="false" onAction="#btnAbrirGrabaciones" prefHeight="34.0" prefWidth="200.0" text="Abrir Clase" />
+      <TextArea fx:id="inputMinutado" editable="false" layoutX="242.0" layoutY="81.0" prefHeight="448.0" prefWidth="387.0" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font></TextArea>
+      <Button fx:id="btnNumGrabaciones" layoutX="442.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnGuardarGrabaciones" prefHeight="34.0" prefWidth="187.0" text="Grabaciones por Almacenar: 10" />
+   </children>
+</AnchorPane>
