@@ -540,7 +540,7 @@ public class funciones {
     
     public String [] proximaClase(){
        
-       File path = new File("C:\\Users\\juanj\\Documents\\Personal-Projects\\DAMAssistant\\archivos\\clases_online.txt");
+       File path = new File("C:\\Users\\juanj\\Documents\\Personal-Projects\\DAMAssistant\\src\\damassistant\\clases_online.txt");
        
        String [] division = recuperarMinutado(path).split(",");
        
