@@ -51,7 +51,7 @@ public class vistaPrincipalController implements Initializable {
     
     @FXML
     private void btnGrabaciones(ActionEvent event) {
-        cargarPanel("/grabaciones/vistaGrabaciones.fxml");
+        cargarPanel("/minutados/minutados.fxml");
     }
     
     @FXML

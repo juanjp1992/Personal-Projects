@@ -13,8 +13,11 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -237,7 +240,7 @@ public class funciones {
         return numUnidades;
     } 
 
-    public String crearEstructuraTarea(String asignatura){
+    public String crearEstructuraTarea(String asignatura, String enlaceWord){
         //Guardo array de string para comparar con la unidad
         String [] asignaturas = {"PSP", "SGE", "DI", "PMDM", "AD"};
         int numProxUnidad = -1;
@@ -260,22 +263,23 @@ public class funciones {
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo crear la nueva unidad", "Error de Creación", JOptionPane.WARNING_MESSAGE);
         }
-        //ANTES COGIA EL WORD Y LO LLEVABA
-        /*Creo la ruta del archivo base y la de destino
-            File archivoBase = new File(path + File.separator + "base.docx");
-            File destinoArchivoBase = new File(nuevaUnidad+ File.separator + asignatura + "_Jimenez_Perez_Juan_47619383E_T" + numProxUnidad + ".docx");
-        try {
-            
-            //Realizo una copia
-            Files.copy(archivoBase.toPath(), destinoArchivoBase.toPath());
-            
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo realizar la copia del archivo base.docx", "Error Realizando la Copia", JOptionPane.WARNING_MESSAGE);
+       
+        //Creo txt para el enlace al word posterior
+        File archivoEnlaceWord = new File(pathNuevaUnidad + File.separator + "enlace_word.txt");
+        
+        try{
+            if(!archivoEnlaceWord.exists()){
+                //Si no existe, lo creo.
+                archivoEnlaceWord.createNewFile();
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo crear la nueva unidad", "Error de Creación", JOptionPane.WARNING_MESSAGE);
         }
         
-        //Creo el archivo .zip para luego almacenar más facilmente.
+        this.guardarMinutado(archivoEnlaceWord, enlaceWord);
         
-        */
+       
         
         //Creación del ZIP, creo la ruta donde irá el ZIP.
         File creacionZIP = new File(pathNuevaUnidad+ File.separator + asignatura + "_Jimenez_Perez_Juan_47619383E_T" + numProxUnidad + ".zip");
@@ -683,6 +687,8 @@ public class funciones {
             try {
                 //Realizo una copia del pdf final (origen) al nuevo destino.
                 Files.copy(pathPDFfinal.toPath(), destinoArchivoBase.toPath());
+                
+                
 
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "ERROR: No se pudo realizar la copia del archivo", "Error Realizando la Copia", JOptionPane.WARNING_MESSAGE);
@@ -705,6 +711,21 @@ public class funciones {
         //Si no es correcto el pdf, elimina el archivo final de la carpeta de origen.
         else{
             pathPDFfinal.delete();
+        }
+    }
+   
+    public static int respuestaWEB(String urlString){
+        URL u; 
+        HttpURLConnection huc;
+        try {
+            u = new URL(urlString);
+            huc = (HttpURLConnection)  u.openConnection();
+            huc.setRequestMethod("GET"); 
+            huc.connect(); 
+            return huc.getResponseCode();
+        } catch (IOException ex) {
+            Logger.getLogger(funciones.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
         }
     }
 }

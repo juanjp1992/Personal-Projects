@@ -15,14 +15,14 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="16.0" layoutY="138.0" prefHeight="17.0" prefWidth="154.0" text="Creación Tareas">
+      <Label layoutX="16.0" layoutY="117.0" prefHeight="17.0" prefWidth="154.0" text="Creación Tareas">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <ComboBox fx:id="selectAsignaturasTareas" layoutX="16.0" layoutY="181.0" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
-      <Button contentDisplay="CENTER" layoutX="223.0" layoutY="181.0" mnemonicParsing="false" onAction="#btnCrearEstructura" prefHeight="25.0" prefWidth="120.0" text="Crear Estructura" />
-      <Label fx:id="txtResultadoEstructura" layoutX="19.0" layoutY="218.0" text="Se ha creado correctamente" />
+      <ComboBox fx:id="selectAsignaturasTareas" layoutX="16.0" layoutY="160.0" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
+      <Button contentDisplay="CENTER" layoutX="223.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnCrearEstructura" prefHeight="25.0" prefWidth="120.0" text="Crear Estructura" />
+      <Label fx:id="txtResultadoEstructura" layoutX="16.0" layoutY="226.0" text="Se ha creado correctamente" />
       <Label layoutX="19.0" layoutY="255.0" text="Temario">
          <font>
             <Font size="22.0" />
@@ -138,21 +138,30 @@
          </font>
       </Label>
       <Button layoutX="226.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnBusquedaArchivo" prefHeight="25.0" prefWidth="28.0" text="+" />
-      <TextField fx:id="txtRuta" layoutX="259.0" layoutY="294.0" />
+      <TextField fx:id="txtRuta" layoutX="259.0" layoutY="294.0" promptText="Introduce la carpeta" />
       <ComboBox fx:id="selectAsignaturasPDF" layoutX="226.0" layoutY="335.0" onAction="#accionSelectAsignaturaPDF" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
       <Button fx:id="btnFusionarPDF" layoutX="226.0" layoutY="383.0" mnemonicParsing="false" onAction="#accionFusionarPDF" prefHeight="32.0" prefWidth="185.0" text="Fusionar PDF's" />
-      <Button layoutX="473.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnReset" prefHeight="6.0" prefWidth="117.0" text="Reset" />
-      <Button layoutX="600.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnContadorMas" prefHeight="50.0" prefWidth="33.0" text="+" />
-      <TextField fx:id="txtContador" alignment="CENTER" editable="false" layoutX="474.0" layoutY="178.0" prefHeight="35.0" prefWidth="117.0" text="1">
+      <Button layoutX="473.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnReset" prefHeight="6.0" prefWidth="117.0" text="Reset" />
+      <Button layoutX="600.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnContadorMas" prefHeight="50.0" prefWidth="33.0" text="+" />
+      <TextField fx:id="txtContador" alignment="CENTER" editable="false" layoutX="474.0" layoutY="157.0" prefHeight="35.0" prefWidth="117.0" text="1">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </TextField>
-      <Label layoutX="417.0" layoutY="138.0" prefHeight="17.0" prefWidth="154.0" text="Contador">
+      <Label layoutX="417.0" layoutY="117.0" prefHeight="17.0" prefWidth="154.0" text="Contador">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="432.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnContadorMenos" prefHeight="50.0" prefWidth="33.0" text="-" />
+      <Button layoutX="432.0" layoutY="157.0" mnemonicParsing="false" onAction="#btnContadorMenos" prefHeight="50.0" prefWidth="33.0" text="-" />
+      <Label layoutX="226.0" layoutY="423.0" text="Abrir Word">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="selectAsignaturasWord" layoutX="223.0" layoutY="456.0" onAction="#accionSelectAsignaturaWord" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la asignatura" />
+      <ComboBox fx:id="selectUnidad" layoutX="223.0" layoutY="491.0" prefHeight="25.0" prefWidth="185.0" promptText="Selecciona la unidad" />
+      <Button layoutX="223.0" layoutY="525.0" mnemonicParsing="false" onAction="#btnAbrirWord" prefHeight="35.0" prefWidth="185.0" text="Abrir Word" />
+      <TextField fx:id="txtEnlaceWord" layoutX="15.0" layoutY="194.0" prefHeight="25.0" prefWidth="328.0" promptText="Introduce la ruta web del Word" />
    </children>
 </AnchorPane>

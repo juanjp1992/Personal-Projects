@@ -13,10 +13,14 @@
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <ComboBox fx:id="selectAsignaturas" layoutX="14.0" layoutY="58.0" onAction="#accionSelectAsignaturas" prefHeight="25.0" prefWidth="178.0" promptText="Selecciona Asignatura" />
-      <ComboBox fx:id="selectMinutados" layoutX="203.0" layoutY="58.0" onAction="#accionSelectMinutados" prefHeight="25.0" prefWidth="178.0" promptText="Selecciona Minutado" />
-      <Button layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnCrearNuevo" text="Crear Nuevo" />
-      <Button layoutX="537.0" layoutY="58.0" mnemonicParsing="false" onAction="#btnGuardarCambios" text="Guardar Cambios" />
+      <ComboBox fx:id="selectAsignaturas" layoutX="14.0" layoutY="20.0" onAction="#accionSelectAsignaturas" prefHeight="25.0" prefWidth="172.0" promptText="Selecciona Asignatura" />
+      <Button layoutX="562.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnCrearNuevo" text="Crear Nuevo" />
+      <Button layoutX="527.0" layoutY="58.0" mnemonicParsing="false" onAction="#btnGuardarCambios" prefHeight="25.0" prefWidth="118.0" text="Guardar Cambios" />
       <Label fx:id="txtEstado" layoutX="14.0" layoutY="564.0" text="Estado " />
+      <ComboBox fx:id="selectClase" layoutX="18.0" layoutY="58.0" onAction="#accionSelectClase" prefHeight="25.0" prefWidth="137.0" promptText="Selecciona Clase" />
+      <CheckBox fx:id="checkAperturaVideos" layoutX="205.0" layoutY="24.0" mnemonicParsing="false" text="Auto Videos" />
+      <CheckBox fx:id="checkModoEdicion" layoutX="544.0" layoutY="565.0" mnemonicParsing="false" onAction="#clickModoEdicion" text="Modo Edición" />
+      <Button fx:id="btnNumGrabaciones" layoutX="357.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnGuardarGrabaciones" prefHeight="25.0" prefWidth="187.0" text="Grabaciones por Almacenar: 10" />
+      <ComboBox fx:id="selectMinutados" layoutX="165.0" layoutY="58.0" onAction="#accionSelectMinutados" prefHeight="25.0" prefWidth="165.0" promptText="Selecciona Minutado" />
    </children>
 </AnchorPane>

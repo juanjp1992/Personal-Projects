@@ -38,7 +38,7 @@ public class TareasController implements Initializable {
     Button btnAD, btnPMDM, btnSGE, btnDI, btnPSP, btnMenosEstado, btnMasEstado, btnFusionarPDF;
     
     @FXML
-    ComboBox selectAsignaturasTareas, selectAsignaturasTema, selectAsignaturas, selectAsignaturasPDF, selectFuncionalidad;
+    ComboBox selectUnidad, selectAsignaturasTareas, selectAsignaturasTema, selectAsignaturas, selectAsignaturasPDF, selectFuncionalidad, selectAsignaturasWord;
     
     @FXML
     Label txtResultadoEstructura;
@@ -47,7 +47,7 @@ public class TareasController implements Initializable {
     ListView listaTemas;
     
     @FXML
-    TextField txtNumUnidad, txtRuta, txtContador;
+    TextField txtNumUnidad, txtRuta, txtContador, txtEnlaceWord;
     
     @FXML
     AnchorPane PanelTareas;
@@ -76,8 +76,11 @@ public class TareasController implements Initializable {
     
     @FXML
     private void btnCrearEstructura(ActionEvent event) {
-        txtResultadoEstructura.setText(f.crearEstructuraTarea((String) selectAsignaturasTareas.getValue()));
+        txtResultadoEstructura.setText(f.crearEstructuraTarea((String) selectAsignaturasTareas.getValue(), txtEnlaceWord.getText()));
         actualizaUnidadActual();
+        
+        txtEnlaceWord.clear();
+        
     }
     
     @FXML
@@ -307,6 +310,60 @@ public class TareasController implements Initializable {
         txtContador.setText("1");
     }
     
+    @FXML
+    private void btnAbrirWord(ActionEvent event){
+        
+       File rutaWords = new File ("\\\\192.168.1.220\\nukistorage\\Estudios\\DAM\\2_DAM\\Tareas" + File.separator + selectAsignaturasWord.getValue() + 
+               File.separator + selectUnidad.getValue()+ File.separator +"enlace_word.txt");
+       if(rutaWords.exists()){
+       
+       String url = f.recuperarMinutado(rutaWords).trim();
+  
+        System.out.println(url);
+        f.abrirWeb(url);
+       }
+       else{
+           File rutaWordsFisicos = new File ("\\\\192.168.1.220\\nukistorage\\Estudios\\DAM\\2_DAM\\Tareas" + File.separator + selectAsignaturasWord.getValue() + 
+               File.separator + selectUnidad.getValue());
+           
+           String [] archivosFisicos = rutaWordsFisicos.list();
+           
+           for (int i = 0; i < archivosFisicos.length; i++) {
+               
+               if(archivosFisicos[i].contains(".doc")){
+                   File abreWord = new File ("\\\\192.168.1.220\\nukistorage\\Estudios\\DAM\\2_DAM\\Tareas" + File.separator + selectAsignaturasWord.getValue() + 
+                    File.separator + selectUnidad.getValue() + File.separator + archivosFisicos[i]);
+                   f.abrirArchivo(abreWord);
+               }
+               
+           }
+       }
+    }
+    
+     @FXML
+    private void accionSelectAsignaturaWord(ActionEvent event) {
+        
+        if(selectAsignaturasWord.getValue().equals("PSP") || selectAsignaturasWord.getValue().equals("SGE") || selectAsignaturasWord.getValue().equals("AD") || selectAsignaturasWord.getValue().equals("DI") || selectAsignaturasWord.getValue().equals("PMDM")){
+            
+            selectUnidad.getItems().clear();
+            
+            selectAsignaturasWord.getValue();
+            
+            File rutaWords = new File ("\\\\192.168.1.220\\nukistorage\\Estudios\\DAM\\2_DAM\\Tareas" + File.separator + selectAsignaturasWord.getValue());
+            
+            String [] archivos = f.recuperarListadoArchivos(rutaWords);
+            
+            ObservableList<String> unidades =  FXCollections.observableArrayList(archivos);
+           
+            selectUnidad.getItems().addAll(unidades);
+            
+
+            
+        }
+    } 
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtResultadoEstructura.setText("");
@@ -315,6 +372,7 @@ public class TareasController implements Initializable {
         selectAsignaturasTema.getItems().addAll(asignaturasCB);
         selectAsignaturasPDF.getItems().addAll(asignaturasCB);
         selectAsignaturas.getItems().addAll(asignaturasCB);
+        selectAsignaturasWord.getItems().addAll(asignaturasCB);
         selectFuncionalidad.getItems().addAll(funcionalidad);
         
         //Al principio debe estar desactivado

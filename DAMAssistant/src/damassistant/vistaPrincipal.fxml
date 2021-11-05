@@ -23,7 +23,6 @@
                   <Button layoutX="45.0" layoutY="292.0" mnemonicParsing="false" onAction="#btnInicio" prefHeight="31.0" prefWidth="134.0" text="INICIO" />
                   <Button layoutX="25.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnTareas" prefHeight="31.0" prefWidth="134.0" text="HERRAMIENTAS" />
                   <Button layoutX="21.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnGrabaciones" prefHeight="31.0" prefWidth="134.0" text="GRABACIONES" />
-                  <Button layoutX="21.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnMinutados" prefHeight="31.0" prefWidth="134.0" text="MINUTADOS" />
                </children>
                <BorderPane.margin>
                   <Insets />

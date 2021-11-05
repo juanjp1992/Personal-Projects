@@ -20,8 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -36,13 +38,19 @@ import javafx.scene.control.TextInputDialog;
 public class MinutadosController implements Initializable {
 
     @FXML
-    ComboBox selectMinutados, selectAsignaturas;
+    ComboBox selectClase, selectAsignaturas, selectMinutados;
     
     @FXML
     TextArea txtMinutado;
     
     @FXML
     Label txtEstado;
+    
+    @FXML
+    CheckBox checkAperturaVideos, checkAutoguardado, checkModoEdicion;
+    
+    @FXML
+    Button btnNumGrabaciones;
             
     ObservableList<String> asignaturas =  FXCollections.observableArrayList("PSP", "DI", "SGE", "PMDM", "AD");
     
@@ -150,37 +158,119 @@ public class MinutadosController implements Initializable {
     }
     
     @FXML
+    private void accionSelectClase(ActionEvent event) {
+        //Recupero la asignatura
+        String asignatura = (String) selectAsignaturas.getValue();
+        
+        String clase = (String) selectClase.getValue();
+        
+        //Creo ruta
+        File rutaVideo = new File(rutaBase + File.separator + asignatura + File.separator + clase);
+       
+        if(checkAperturaVideos.isSelected()){
+            f.abrirArchivo(rutaVideo);
+        }
+        
+    }
+    
+      @FXML
     private void accionSelectMinutados(ActionEvent event) {
         //Recupero la asignatura
         String asignatura = (String) selectAsignaturas.getValue();
         
+        String clase = (String) selectClase.getValue();
         String minutado = (String) selectMinutados.getValue();
         
-        //Creo ruta
-        File eleccion = new File(rutaBase + File.separator + asignatura + File.separator + "minutado" + File.separator + minutado);
         
-        //Le paso el archivo 
-        txtMinutado.setText(f.recuperarMinutado(eleccion));
+        //Creo ruta
+        File rutaMinutado = new File(rutaBase + File.separator + asignatura + File.separator + "minutado" + File.separator + minutado);
+      
+        
+        if(rutaMinutado.exists()){
+            compruebaEstadoCheckModoEdicion();
+        }
+        else{
+            this.txtMinutado.setEditable(false);
+        }
+        
+        //Le paso el archivo a abrir 
+        txtMinutado.setText(f.recuperarMinutado(rutaMinutado));
+        
         
     }
     
     @FXML
     private void accionSelectAsignaturas(ActionEvent event) {
         
+        selectClase.getItems().clear();
+        selectMinutados.getItems().clear();
+        txtMinutado.clear();
         //Recupero la asignatura
         String asignatura = (String) selectAsignaturas.getValue();
         
         //Creo ruta
-        File eleccion = new File(rutaBase + File.separator + asignatura + File.separator + "minutado");
+        File rutaClases = new File(rutaBase + File.separator + asignatura);
+        File rutaMinutados = new File(rutaBase + File.separator + asignatura + File.separator + "minutado");
+        
+        //Escondo la carpeta minutados
+        String [] recuperoMinutados = f.recuperarListadoArchivos(rutaMinutados);
+        String [] videosClases = f.recuperarListadoArchivos(rutaClases);
+        String [] resultado = new String [videosClases.length - 1];
+        int contador = 0;
+        for (int i = 0; i < videosClases.length; i++) {
+            //resultado[i-1] =  archivos[i];
+            if(!videosClases[i].contains("minutado")){
+                resultado[contador] = videosClases[i];
+                contador++;
+            }
+        }
 
         //Recupero los archivos que hay en la ruta y los guardo en un observable list
-        ObservableList<String> minutados =  FXCollections.observableArrayList(f.recuperarListadoArchivos(eleccion));
         
-        //Limpio el listado
-        selectMinutados.getItems().clear();
+        ObservableList<String> clases =  FXCollections.observableArrayList(resultado);
+        ObservableList<String> minutados =  FXCollections.observableArrayList(recuperoMinutados);
        
         //Añado lo archivos añadidos al ObservableList a mi lista.
+        selectClase.getItems().addAll(clases);
         selectMinutados.getItems().addAll(minutados);
+    }
+    
+    private void compruebaEstadoCheckModoEdicion(){
+        if(checkModoEdicion.isSelected()){
+            this.txtMinutado.setEditable(true);
+        }
+        else{
+            this.txtMinutado.setEditable(false);
+        }
+    }
+    
+    @FXML
+    private void clickModoEdicion(ActionEvent event) {
+        compruebaEstadoCheckModoEdicion();
+    }
+    
+    @FXML
+    private void btnGuardarGrabaciones(ActionEvent event){
+        
+        //Activo el asistente de guardado de videos
+        f.guardarGrabaciones();
+        
+        //Actualiza el estado del botón.
+        actualizaBtnGrabacion();
+    }
+    
+    
+    private void actualizaBtnGrabacion(){
+        //Activa la cantidad de grabaciones
+        btnNumGrabaciones.setText("Grabaciones por Almacenar: " + String.valueOf(f.numClasesParaOrganizar()));
+        //Activa y desactiva según el número el botón de cantidad.
+        if(f.numClasesParaOrganizar() == 0){
+            btnNumGrabaciones.setDisable(true);
+        }
+        else{
+            btnNumGrabaciones.setDisable(false);
+        }
+        
     }
     
     
@@ -188,6 +278,9 @@ public class MinutadosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         selectAsignaturas.getItems().addAll(asignaturas);
         txtEstado.setText("");
+        this.txtMinutado.setEditable(false);
+        actualizaBtnGrabacion();
+        
         
     }    
     
